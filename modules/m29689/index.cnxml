@@ -1,0 +1,200 @@
+<document xmlns="http://cnx.rice.edu/cnxml" xmlns:md="http://cnx.rice.edu/mdml">
+  <title>Advanced  Architectures</title>
+  <metadata>
+  <md:content-id>m29689</md:content-id><md:title>Advanced  Architectures</md:title>
+  <md:abstract/>
+  <md:uuid>3ca1543c-8555-4774-aeaf-dc04b63cf389</md:uuid>
+</metadata>
+
+<content>
+    <section id="id-232957776429">
+      <title>1. Introduction</title>
+      <para id="id9661975">In the previous sections of this course. we have concentrated on singleprocessor architectures and techniques to improve upon their performance, such as:</para>
+      <para id="id6735766">– Efficient algebraic hardware implementations</para>
+      <para id="id5200413">– Enhanced processor operation through pipelined instruction execution and multiplicity of functional units</para>
+      <para id="id8130073">– Memory hierarchy</para>
+      <para id="id8130081">– Control unit design</para>
+      <para id="id9684963">– I/O operations</para>
+      <para id="id8777468">Through these techniques and implementation improvements, the processing power of a computer system has increased by an order of magnitude every 5 years. We are (still) approaching performance bounds due to physical limitations of the hardware.</para>
+      <list id="id8777479" list-type="bulleted">
+        <item>Several approaches of parallel computer are possible</item>
+      </list>
+      <para id="id7535273">– Improve the basic performance of a single processor machine</para>
+      <para id="id7429608">Architecture / organization improvements</para>
+      <para id="id6411660">Implementation improvements</para>
+      <para id="id8305698">SSI --&gt; VLSI --&gt; ULSI</para>
+      <para id="id8029036">Clock speed</para>
+      <para id="id8029046">Packaging</para>
+      <para id="id9683634">– Multiple processor system architectures</para>
+      <para id="id8779630">Tightly coupled system</para>
+      <para id="id7652406">Loosely coupled system</para>
+      <para id="id7652415">Distributed computing system</para>
+      <para id="id7555608">- Parallel computer: SIMD computer, MIMD computer</para>
+    </section>
+    <section id="id-180292623004">
+      <title>2. Multiple Processor Systems</title>
+      <para id="id6490283">System with multiprocessor CPUs can be divided into multiprocessor and multicomputers. In this section we will first study multiprocessors and then multicomputers</para>
+      <section id="id-280699125408">
+        <title>Shared-Memory Multiprocessor</title>
+        <para id="id8811553">A parallel computer in which all the CPUs share a common memory is called a tightly coupled systems</para>
+        <figure id="id9672832">
+          <media id="id1170195484496" alt=""><image src="../../media/graphics1.jpg" mime-type="image/jpeg" height="538" width="588"/></media>
+        </figure>
+        <para id="id7651630">Figure 16.1. Tightly coupled systems, Shased-memory multiprocessor</para>
+        <list id="id9182030" list-type="bulleted">
+          <item>The features of the system are as follow.</item>
+        </list>
+        <para id="id7159434">– Multiple processors</para>
+        <para id="id7437590">– Shared, common memory system</para>
+        <para id="id7437599">– Processors under the integrated control of a common operating system</para>
+        <para id="id6683738">– Data is exchanged between processors by accessing common shared variable locations in memory</para>
+        <para id="id6411974">– Common shared memory ultimates presents an overall system bottleneck that effectively limits the sizes of these systems to a fairly small number of processors (dozens)</para>
+      </section>
+      <section id="id-748820488049">
+        <title>Message-passing multiprocessor</title>
+        <para id="id6453154">A parallel computer in which all the CPUs has a local independent memory is called a loosely coupled systems</para>
+        <figure id="id7439915">
+          <media id="id1170197630531" alt=""><image src="../../media/graphics2.jpg" mime-type="image/jpeg" height="534" width="587"/></media>
+        </figure>
+        <para id="id6892905">Figure 16.2. Loosely coupled systems, Message-passing multiprocessor</para>
+        <list id="id9641122" list-type="bulleted">
+          <item>The features of the system are as follow.</item>
+        </list>
+        <para id="id3212440">– Multiple processors</para>
+        <para id="id7918800">– Each processor has its own independent memory system</para>
+        <para id="id7555785">– Processors under the integrated control of a common operating system</para>
+        <para id="id7555794">– Data exchanged between processors via interprocessor messages</para>
+        <para id="id7829202">– This definition does not agree with the one given in the text</para>
+      </section>
+      <section id="id-911709697187">
+        <title>Distributed computing systems</title>
+        <para id="id7555168">Now we can see the message-passing computer that multicomputer are held togerther by network.</para>
+        <para id="id8748718">– Collections of relatively autonomous computers, each capable of independent operation</para>
+        <para id="id7437700">– Example systems are local area networks of computer workstations</para>
+        <para id="id7440440">+ Each machine is running its own “copy” of the operating system</para>
+        <para id="id6859480">+ Some tasks are done on different machines (e.g., mail handler is on one machine)</para>
+        <para id="id6735970">+ Supports multiple independent users</para>
+        <para id="id6735977">+ Load balancing between machines can cause a user’s job on one machine to be shifted to another</para>
+      </section>
+      <section id="id-384394973333">
+        <title>Performance bounds of Multiple Processor Systems</title>
+        <list id="id7534951" list-type="bulleted">
+          <item>For a system with n processors, we would like a net processing speedup (meaning lower overall execution time) of nearly n times when compared to the performance of a similar uniprocessor system</item>
+          <item>A number of poor performance “upper bounds” have been proposed over the years</item>
+        </list>
+        <para id="id9181975">Maximum speedup of O(log n)</para>
+        <para id="id7442450">Maximum speedup of O(n / ln n)</para>
+        <list id="id7442458" list-type="bulleted">
+          <item>These “bounds” were based on runtime performance of applications and were not necessarily valid in all cases</item>
+          <item>They reinforced the computer industry’s hesitancy to “get into” parallel processing</item>
+        </list>
+      </section>
+    </section>
+    <section id="id-658940187434">
+      <title>3. Parallel Processors</title>
+      <para id="id9700296">The machines are the true parallel processors (also called concurrent processors)</para>
+      <para id="id9685199">These paralle machines fall into Flynn’s taxonomy classes of SIMD and MIMD systems</para>
+      <para id="id9685209">– SIMD: Single Instruction stream and Multiple Data streams</para>
+      <para id="id7443633">– MIMD: Multiple Instruction streams and Multiple Data streams</para>
+      <section id="id-307372844508">
+        <title>SIMD Overview</title>
+        <list id="id8811447" list-type="bulleted">
+          <item>Single “control unit” computer and anarray of “computational” computers </item>
+          <item>Control unit executes control-flowinstructions and scalar operations and passes vector instructions to the processor array</item>
+          <item>Processor instruction types: </item>
+        </list>
+        <para id="id7243798">– Extensions of scalar instructions</para>
+        <para id="id7555550">Adds, stores, multiplies, etc. become vector operations executed in all processors concurrently</para>
+        <para id="id8786667">– Must add the ability to transfer vector and scalar data between processors to the instruction set -- attributes of a “parallel language”</para>
+        <list id="id8897393" list-type="bulleted">
+          <item>SIMD Examples</item>
+        </list>
+        <para id="id8897401">Vector addition</para>
+        <para id="id6683472">C(I) = A(I) + B(I)</para>
+        <para id="id6683481">Complexity O(n) in SISD systems for I=1 to n do</para>
+        <para id="id9056771">C(I) = A(I) + B(I)</para>
+        <para id="id7369073">Complexity O(1) in SIMD systems</para>
+        <para id="id7442084">Matrix multiply</para>
+        <para id="id7442089">A, B, and C are n-by-n matrices</para>
+        <para id="id7555342">Compute C= AxB</para>
+        <para id="id7555350">Complexity O(n3) in SISD systems</para>
+        <para id="id7659257">n2 dot products, each of which is O(n)</para>
+        <para id="id7730675">Complexity O(n2) in SIMD systems</para>
+        <para id="id7730683">Perform n dot products in parallel across M the array</para>
+        <para id="id7441806">Image smoothing</para>
+        <para id="id7731222">– Smooth an n-by-n pixel image to reduce “noise”</para>
+        <para id="id7731230">– Each pixel is replaced by the average of itself</para>
+        <para id="id9056242">and its 8 nearest neighbors</para>
+        <para id="id9056247">– Complexity O(n2) in SISD systems</para>
+        <para id="id9056251">– Complexity O(n) in SIMD systems</para>
+        <para id="id9111764">Pixel and 8 neighbors</para>
+      </section>
+      <section id="id-246547769778">
+        <title>MIMD Systems Overview</title>
+        <list id="id6452980" list-type="bulleted">
+          <item>MIMD systems differ from SIMD ones in that the “lock-step” operation requirement is removed</item>
+          <item>Each processor has its own control unit and can execute an independent stream of</item>
+        </list>
+        <para id="id7568461">instructions</para>
+        <para id="id9669750">– Rather than forcing all processors to perform the same task at the same time, processors can be assigned different tasks that, when taken as a whole, complete the assigned application </para>
+        <list id="id6070218" list-type="bulleted">
+          <item>SIMD applications can be executed on an MIMD structure</item>
+        </list>
+        <para id="id8481145">– Each processor executes its own copy of the SIMD algorithm</para>
+        <list id="id8481154" list-type="bulleted">
+          <item>Application code can be decomposed into communicating processes</item>
+        </list>
+        <para id="id9056356">– Distributed simulations is a good example of a</para>
+        <para id="id7555662">very hard MIMD application</para>
+        <list id="id7312855" list-type="bulleted">
+          <item>Keys to high MIMD performance are</item>
+        </list>
+        <para id="id7439157">– Process synchronization</para>
+        <para id="id7439166">– Process scheduling</para>
+        <list id="id8779606" list-type="bulleted">
+          <item>Process synchronization targets keeping all processors busy and not suspended</item>
+        </list>
+        <para id="id7429866">awaiting data from another processor</para>
+        <list id="id9181867" list-type="bulleted">
+          <item>Process scheduling can be performed</item>
+        </list>
+        <para id="id9181875">– By the programmer through the use of parallel language constructs</para>
+        <para id="id7535006"> Specify apriori what processes will be instantiated and where they will be</para>
+        <para id="id6412108">executed</para>
+        <para id="id6412117">– During program execution by spawning processes off for execution on available processors.</para>
+        <para id="id9466802">Fork-join construct in some languages</para>
+        <list id="id7367239" list-type="bulleted">
+          <item>System examples</item>
+        </list>
+        <para id="id7369519">SIMD</para>
+        <para id="id7369524">– Illiac IV</para>
+        <para id="id6736598">One of the first massively parallel systems 64 processors</para>
+        <para id="id6736607">– Goodyear Staran: 256 bit-serial processors</para>
+        <para id="id7430286">– Current system from Cray Computer Corp.uses supercomputer (Cray 3) front end coupled to an SIMD array of 1000s of processors </para>
+        <para id="id8030461">MIMD</para>
+        <para id="id7651988">– Intel hypercube series: </para>
+        <para id="id7651996">Supported up to several hundred CISC processors </para>
+        <para id="id7429346">Next-gen Paragon</para>
+        <para id="id8748897">– Cray Research T3D</para>
+        <para id="id9136645">Cray Y-MP coupled to a massive array of Dec Alphas</para>
+        <para id="id9136656">Target: sustained teraflop performance</para>
+      </section>
+    </section>
+    <section id="id-318476774016">
+      <title>4. Discussions</title>
+      <list id="id6565155" list-type="bulleted">
+        <item>Problems</item>
+      </list>
+      <para id="id7448231">– Hardware is relatively easy to build</para>
+      <para id="id7448239">– Massively parallel systems just take massive amounts of money to build</para>
+      <para id="id3396560">– How should/can the large numbers of processors be interconnected</para>
+      <para id="id7731118">– The real trick is building software that will exploit the capabilities of the system</para>
+      <list id="id7535316" list-type="bulleted">
+        <item>Reality check:</item>
+      </list>
+      <para id="id7535324">– Outside of a limited number of high-profile applications, parallel processing is still a“young” discipline</para>
+      <para id="id9181852">– Parallel software is still fairly sparse</para>
+      <para id="id7918024">– Risky for companies to adopt parallel strategies, just wait for the next new SISD system.</para>
+    </section>
+  </content>
+</document>
